@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+/* Modo oscuro por clase: .dark en el div raíz (App.jsx), no por
+   prefers-color-scheme del sistema — igual que el toggle original. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Paleta original (variables --color* de style.css) */
+  --color-felt: #207720;
+  --color-felt-dark: #003500;
+  --color-felt-gradient-dark: #001400;
+  --color-ivory: #dddddd;
+  --color-gold: #ffda14;
+  --color-gold-dark: #897400;
+  --color-silver: #cccccc;
+  --color-charcoal: #4c4c4c;
+  --color-tan: #d09156;
+  --color-tan-dark: #3d2611;
+  --color-switch-red: #ff0000;
+  --color-cell-active: #000000;
+  --color-cell-active-dark: #cccccc;
+
+  /* Radio de esquina repetido en celdas, botones y el panel lateral */
+  --radius-cell: 10px;
+
+  /* Tipografías (mismo par que el original, en dos roles distintos) */
+  --font-serif: "Baskervville", "Libre Baskerville", serif;
+  --font-serif-alt: "Libre Baskerville", serif;
+}
