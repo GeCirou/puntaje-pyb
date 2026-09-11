@@ -13,7 +13,7 @@ export default function App() {
   return (
     <div
       className={cn(
-        'grid min-h-screen max-w-[425px] grid-cols-[1fr_100px] grid-rows-[75px_auto_60px] bg-felt font-serif transition-colors duration-200',
+        'px-8 grid min-h-screen w-full max-w-[600px] grid-cols-[1fr_100px] grid-rows-[75px_auto_60px] bg-felt font-serif transition-colors duration-200',
         state.dark && 'dark bg-felt-dark'
       )}
     >

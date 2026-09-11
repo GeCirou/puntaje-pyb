@@ -21,10 +21,10 @@ export default function Sidebar({ state, toggleDark, reset }) {
   const resultadosRef = useRef(null);
 
   const zoomOn = () => {
-    if (resultadosRef.current) resultadosRef.current.style.zoom = '50%';
+    if (resultadosRef.current) resultadosRef.current.style.transform = 'scale(0.5)';
   };
   const zoomOff = () => {
-    if (resultadosRef.current) resultadosRef.current.style.zoom = '100%';
+    if (resultadosRef.current) resultadosRef.current.style.transform = 'scale(1)';
   };
 
   return (
@@ -52,7 +52,7 @@ export default function Sidebar({ state, toggleDark, reset }) {
       </div>
 
       <div
-        className="my-10 font-serif-alt text-xl leading-normal font-bold text-ivory"
+        className="my-10 font-serif-alt text-xl leading-normal font-bold text-ivory transition-transform duration-150"
         ref={resultadosRef}
         onTouchStart={zoomOn}
         onTouchEnd={zoomOff}
