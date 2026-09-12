@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { forwardRef } from 'react';
 import { cn } from '../ui/cn';
 import { btnSilver, btnTan } from '../ui/buttonStyles';
 
@@ -17,18 +17,12 @@ const AYUDA =
   'El botón "Reset" elimina toda la información registrada.\n\n' +
   'El botón "Reglas" da acceso al Reglamento de Naipes que se aplica durante la partida.';
 
-export default function Sidebar({ state, toggleDark, reset }) {
-  const resultadosRef = useRef(null);
-
-  const zoomOn = () => {
-    if (resultadosRef.current) resultadosRef.current.style.transform = 'scale(0.5)';
-  };
-  const zoomOff = () => {
-    if (resultadosRef.current) resultadosRef.current.style.transform = 'scale(1)';
-  };
-
+const Sidebar = forwardRef(function Sidebar({ state, toggleDark, reset, zoomOn, zoomOff }, ref) {
   return (
-    <aside className="col-start-2 row-start-2 flex flex-col items-center rounded-cell border-2 border-ivory p-1.25 text-base">
+    <aside
+      ref={ref}
+      className="col-start-2 row-start-2 flex flex-col items-center rounded-cell border-2 border-ivory p-1.25 text-base transition-transform duration-150"
+    >
       <button
         onClick={toggleDark}
         className={cn(
@@ -52,8 +46,7 @@ export default function Sidebar({ state, toggleDark, reset }) {
       </div>
 
       <div
-        className="my-10 font-serif-alt text-xl leading-normal font-bold text-ivory transition-transform duration-150"
-        ref={resultadosRef}
+        className="my-10 font-serif-alt text-xl leading-normal font-bold text-ivory"
         onTouchStart={zoomOn}
         onTouchEnd={zoomOff}
       >
@@ -80,4 +73,6 @@ export default function Sidebar({ state, toggleDark, reset }) {
       </button>
     </aside>
   );
-}
+});
+
+export default Sidebar;

@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import Header from './components/Header';
 import ScoreGrid from './components/ScoreGrid';
 import Sidebar from './components/Sidebar';
@@ -10,6 +11,18 @@ export default function App() {
   const { state, registrar, volver, reset, toggleDark, setCellValue } = useScoreboard();
   useWakeLock();
 
+  const scoreGridRef = useRef(null);
+  const sidebarRef = useRef(null);
+
+  const zoomOn = () => {
+    if (scoreGridRef.current) scoreGridRef.current.style.transform = 'scale(0.5)';
+    if (sidebarRef.current) sidebarRef.current.style.transform = 'scale(0.5)';
+  };
+  const zoomOff = () => {
+    if (scoreGridRef.current) scoreGridRef.current.style.transform = 'scale(1)';
+    if (sidebarRef.current) sidebarRef.current.style.transform = 'scale(1)';
+  };
+
   return (
     <div
       className={cn(
@@ -21,11 +34,19 @@ export default function App() {
     >
       <Header />
       <ScoreGrid
+        ref={scoreGridRef}
         active={state.active}
         values={state.values}
         onCellClick={setCellValue}
       />
-      <Sidebar state={state} toggleDark={toggleDark} reset={reset} />
+      <Sidebar
+        ref={sidebarRef}
+        state={state}
+        toggleDark={toggleDark}
+        reset={reset}
+        zoomOn={zoomOn}
+        zoomOff={zoomOff}
+      />
       <Footer registrar={registrar} volver={volver} />
     </div>
   );
