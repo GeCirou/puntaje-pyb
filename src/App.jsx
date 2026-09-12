@@ -12,15 +12,12 @@ export default function App() {
   useWakeLock();
 
   const scoreGridRef = useRef(null);
-  const sidebarRef = useRef(null);
 
   const zoomOn = () => {
     if (scoreGridRef.current) scoreGridRef.current.style.transform = 'scale(0.5)';
-    if (sidebarRef.current) sidebarRef.current.style.transform = 'scale(0.5)';
   };
   const zoomOff = () => {
     if (scoreGridRef.current) scoreGridRef.current.style.transform = 'scale(1)';
-    if (sidebarRef.current) sidebarRef.current.style.transform = 'scale(1)';
   };
 
   return (
@@ -40,7 +37,6 @@ export default function App() {
         onCellClick={setCellValue}
       />
       <Sidebar
-        ref={sidebarRef}
         state={state}
         toggleDark={toggleDark}
         reset={reset}

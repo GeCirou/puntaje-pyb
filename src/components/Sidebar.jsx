@@ -1,4 +1,3 @@
-import { forwardRef } from 'react';
 import { cn } from '../ui/cn';
 import { btnSilver, btnTan } from '../ui/buttonStyles';
 
@@ -17,12 +16,9 @@ const AYUDA =
   'El botón "Reset" elimina toda la información registrada.\n\n' +
   'El botón "Reglas" da acceso al Reglamento de Naipes que se aplica durante la partida.';
 
-const Sidebar = forwardRef(function Sidebar({ state, toggleDark, reset, zoomOn, zoomOff }, ref) {
+export default function Sidebar({ state, toggleDark, reset, zoomOn, zoomOff }) {
   return (
-    <aside
-      ref={ref}
-      className="col-start-2 row-start-2 flex flex-col items-center rounded-cell border-2 border-ivory p-1.25 text-base transition-transform duration-150"
-    >
+    <aside className="col-start-2 row-start-2 flex flex-col items-center rounded-cell border-2 border-ivory p-1.25 text-base">
       <button
         onClick={toggleDark}
         className={cn(
@@ -73,6 +69,4 @@ const Sidebar = forwardRef(function Sidebar({ state, toggleDark, reset, zoomOn, 
       </button>
     </aside>
   );
-});
-
-export default Sidebar;
+}
